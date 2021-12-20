@@ -34,7 +34,8 @@ class POIDataModule(pl.LightningDataModule):
     
     def setup(self, stage="fit"):
         # TODO: ADD ANY TRANSFORM YOU NEED
-        transform = transforms.Compose([transforms.ToTensor()])
+        train_transform = transforms.Compose([transforms.ToTensor()])
+        test_transform = transforms.Compose([transforms.ToTensor()])
 
         if stage == "fit" or stage is None:
             images, labels = _read_data(self.train_path)
@@ -43,16 +44,16 @@ class POIDataModule(pl.LightningDataModule):
 
             self.train_dataset = {{cookiecutter.dataset_name}}(x_train,
                                             y_train, 
-                                            transform=transform)
+                                            transform=train_transform)
             self.val_dataset = {{cookiecutter.dataset_name}}(x_val,
                                           y_val,
-                                          transform=transform)
+                                          transform=test_transform)
 
         if stage == "predict" or stage is None:
             images, labels = _read_data(self.test_path)
             self.test_dataset = {{cookiecutter.dataset_name}}(images,
                                            labels, 
-                                           transform=transform)
+                                           transform=test_transform)
 
     def train_dataloader(self):
         if self.train_dataset is not None:
