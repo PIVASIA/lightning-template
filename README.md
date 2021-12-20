@@ -11,4 +11,15 @@ pip install cookiecutter
 cookiecutter https://github.com/PIVASIA/lightning-template.git
 ```
 
-Enter prompt.
+Enter prompt. 
+
+```
+train.py
++---datasets
+        datamodule.py
+        dataset.py
++---models
+        model.py
+```
+
+Enjoy!
