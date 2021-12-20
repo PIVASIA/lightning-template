@@ -1,5 +1,5 @@
 # lightning-template
-Lightning code generator
+Pytorch Lightning project template generator.
 
 # Installation
 ```
