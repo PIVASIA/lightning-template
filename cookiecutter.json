@@ -1,0 +1,8 @@
+{
+    "directory_name": "poi_classification",
+    "project_name": "poi_classification",
+    "project_description": "POI classification",
+    "dataset_name": "POIDataset",
+    "datamodule_name": "POIDataModule",
+    "model_name": "POIClassifier"
+}
