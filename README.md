@@ -14,7 +14,7 @@ cookiecutter https://github.com/PIVASIA/lightning-template.git
 Enter prompt. 
 
 ```
-train.py
+train.py <-- starting point
 +---datasets
         datamodule.py
         dataset.py
