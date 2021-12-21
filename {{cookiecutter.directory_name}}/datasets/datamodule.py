@@ -12,7 +12,7 @@ def _read_data(filepath):
     pass
 
 
-class POIDataModule(pl.LightningDataModule):
+class {{cookiecutter.datamodule_name}}(pl.LightningDataModule):
     def __init__(self,
                  train_path: str,
                  test_path: str,
@@ -34,8 +34,8 @@ class POIDataModule(pl.LightningDataModule):
     
     def setup(self, stage="fit"):
         # TODO: ADD ANY TRANSFORM YOU NEED
-        train_transform = transforms.Compose([transforms.ToTensor()])
-        test_transform = transforms.Compose([transforms.ToTensor()])
+        train_transform = transforms.Compose([])
+        test_transform = transforms.Compose([])
 
         if stage == "fit" or stage is None:
             images, labels = _read_data(self.train_path)
