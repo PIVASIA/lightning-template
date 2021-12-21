@@ -1,5 +1,5 @@
 # lightning-template
-Pytorch Lightning project template generator.
+Pytorch Lightning project boilerplate generator.
 
 # Installation
 ```
