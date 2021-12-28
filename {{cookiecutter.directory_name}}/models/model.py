@@ -50,3 +50,22 @@ class {{cookiecutter.model_name}}(pl.LightningModule):
         loss = self.criterion(outputs, labels)
         
         self.log('val_loss', loss, prog_bar=True, logger=True)
+
+
+class {{cookiecutter.model_task}}(pl.LightningModule):
+    def __init__(self,
+                 model,
+                 output_dir: str = ".",
+                 threshold: float = 0.0):
+        super().__init__()
+        self.model = model
+        self.output_dir = output_dir
+        self.threshold = threshold
+
+    def forward(self, x):
+        output = self.model(x)
+        return output
+
+    def predict_step(self, batch, batch_idx: int, dataloader_idx: int = None):
+        # TODO: ADD YOUR INFERENCE
+        pass
