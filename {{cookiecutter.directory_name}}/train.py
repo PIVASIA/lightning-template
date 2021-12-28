@@ -91,7 +91,7 @@ def handle_train(args):
         monitor="val_loss", 
         min_delta=0.00, patience=3, 
         verbose=False, 
-        mode="max"
+        mode="min"
     )
     callbacks=[checkpoint_callback, early_stop_callback]
 
