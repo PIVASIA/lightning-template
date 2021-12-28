@@ -15,6 +15,7 @@ Enter prompt.
 
 ```
 train.py <-- starting point
+inference.py
 +---datasets
         datamodule.py
         dataset.py
