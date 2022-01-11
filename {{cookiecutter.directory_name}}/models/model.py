@@ -54,18 +54,34 @@ class {{cookiecutter.model_name}}(pl.LightningModule):
 
 class {{cookiecutter.model_task}}(pl.LightningModule):
     def __init__(self,
-                 model,
-                 output_dir: str = ".",
-                 threshold: float = 0.0):
+                 model):
         super().__init__()
         self.model = model
-        self.output_dir = output_dir
-        self.threshold = threshold
 
     def forward(self, x):
         output = self.model(x)
         return output
 
+    def postprocess(self, logits):
+        """
+        Post-process for model output.
+        E.g. For classification task, apply `torch.sigmoid()` or `torch.softmax()` 
+        function to model output in case of training with `nn.BCEWithLogitsLoss()`.
+
+        Args:
+            logits ([type]): [description]
+
+        Returns:
+            [type]: [description]
+        """        
+        return logits
+
     def predict_step(self, batch, batch_idx: int, dataloader_idx: int = None):
         # TODO: ADD YOUR INFERENCE
-        pass
+        logits = self(batch['inputs'])
+        logits = self.postprocess(logits)
+
+        if "label" in batch.keys():
+            return logits.data.cpu().numpy(), batch["label"].data.cpu().numpy()
+
+        return logits.data.cpu().numpy()

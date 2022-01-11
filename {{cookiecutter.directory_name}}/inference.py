@@ -50,7 +50,10 @@ def main():
     task = {{cookiecutter.model_task}}(model, args.output_dir, threshold=args.conf_t)
 
     trainer = pl.Trainer(gpus=args.gpu_ids)
-    trainer.predict(task, datamodule=dm)
+    results = trainer.predict(task, datamodule=dm) # type: List(tuple(y_pred, y_true))
+
+    # TODO
+    # Add your code to evaluate or save inference
 
 if __name__ == "__main__":
     main()
